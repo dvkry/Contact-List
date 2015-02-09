@@ -4,6 +4,8 @@ class Contact
 
   def initialize(name, email)
     # TODO: assign local variables to instance variables
+    @name = name
+    @email = email
   end
  
   def to_s
@@ -14,6 +16,10 @@ class Contact
   class << self
     def create(name, email)
       # TODO: Will initialize a contact as well as add it to the list of contacts
+      new_contact = Contact.new(name, email)
+
+      ContactDatabase.new.write_to_file(new_contact) # returns line number witch will also serve as the ID
+
     end
  
     def find(index)

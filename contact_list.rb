@@ -11,13 +11,28 @@ class Application
     puts "  find - Find a contact"
   end
 
+  def create_new
+
+    print "Name: "
+    name = STDIN.gets.chomp
+    print "E-mail: "
+    email = STDIN.gets.chomp
+    
+    id = Contact.create(name, email) # ID is the line number
+    puts id #return id
+
+  end
+
   def command(arg)
     case arg
     when 'help'
       show_help
+    when 'new'
+      id = create_new
     end
   end
 end
 
+# TODO read file
 app = Application.new
 app.command(ARGV.first)
