@@ -15,10 +15,10 @@ class Contact
  
   ## Class Methods
   class << self
-    def create(name, email)
+    def create(name, email, phone_nums)
       # TODO: Will initialize a contact as well as add it to the list of contacts
       
-      new_contact = Contact.new(name, email)
+      new_contact = Contact.new(name, email, phone_nums)
 
       ContactDatabase.new.write_to_file(new_contact) # returns line number witch will also serve as the ID
 

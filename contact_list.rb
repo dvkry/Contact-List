@@ -22,14 +22,25 @@ class Application
     else
       print "Name: "
       name = STDIN.gets.chomp
-      id = Contact.create(name, email) # ID is the line number
+
+      print "Would you like to add the phone numbers?"
+      response = STDIN.gets.chomp.downcase
+      phone_hash = {}
+      while response == 'yes'
+        print "Lable: "
+        lable = STDIN.gets.chomp
+        print "Number: "
+        number = STDIN.gets.chomp
+        phone_hash[lable] = number
+        print "add another number? "
+        response = STDIN.gets.chomp.downcase
+      end
+
+      id = Contact.create(name, email, phone_hash) # ID is the line number
       puts id #return id
     end
   end
 
-  def check_for_dups(email)
-
-  end
 
   def list
     contact_list = ContactDatabase.new.read_from_file
