@@ -16,7 +16,7 @@ class ContactDatabase
     contact_list = []
     contactfile = File.open('contacts.csv', 'r').readlines.each do |line|
       contact = line.split(',')
-      contact_list << Contact.new(contact[0], contact[1])
+      contact_list << Contact.new(contact[0], contact[1].chomp)
     end
     contact_list
   end

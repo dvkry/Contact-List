@@ -40,7 +40,18 @@ class Contact
     def show(id)
       # TODO: Show a contact, based on ID
     end
-    
+
+    def dups_by_email(email)
+      contact_list = ContactDatabase.new.read_from_file
+      return_value = false
+      contact_list.each do |contact|
+        if contact.email.downcase == email.downcase
+          return_value = true
+        end
+      end
+      return_value
+    end
+   
   end
  
 end

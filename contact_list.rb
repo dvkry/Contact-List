@@ -1,5 +1,6 @@
 require_relative 'contact'
 require_relative 'contact_database'
+require 'pry'
 
 class Application
 
@@ -13,13 +14,20 @@ class Application
 
   def create_new
 
-    print "Name: "
-    name = STDIN.gets.chomp
     print "E-mail: "
     email = STDIN.gets.chomp
-    
-    id = Contact.create(name, email) # ID is the line number
-    puts id #return id
+
+    if Contact.dups_by_email(email)
+      puts "That E-mail already exists"
+    else
+      print "Name: "
+      name = STDIN.gets.chomp
+      id = Contact.create(name, email) # ID is the line number
+      puts id #return id
+    end
+  end
+
+  def check_for_dups(email)
 
   end
 
