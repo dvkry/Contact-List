@@ -1,11 +1,12 @@
 class Contact
  
-  attr_accessor :name, :email
+  attr_accessor :name, :email, :phone_nums
 
-  def initialize(name, email)
+  def initialize(name, email, phone_nums = {})
     # TODO: assign local variables to instance variables
     @name = name
     @email = email
+    @phone_nums = phone_nums
   end
  
   def to_s

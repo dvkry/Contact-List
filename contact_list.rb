@@ -38,6 +38,7 @@ class Application
 
     contact_list.each do |contact|
       puts id_counter.to_s + ": " + contact.name + " (" + contact.email.strip + ")"
+      puts contact.phone_nums if contact.phone_nums != {}
       id_counter += 1 # we know that each contact is on it's 'id' line
     end
   end
