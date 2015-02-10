@@ -23,12 +23,41 @@ class Application
 
   end
 
+  def list
+    contact_list = ContactDatabase.new.read_from_file
+
+    id_counter = 1
+
+    contact_list.each do |contact|
+      puts id_counter.to_s + ": " + contact.name + " (" + contact.email.strip + ")"
+      id_counter += 1 # we know that each contact is on it's 'id' line
+    end
+  end
+
+  def find(id)
+    found = Contact.find(id)
+
+    if found != []
+      found.each do |contact|
+        puts contact.name
+        puts contact.email
+      end
+    else
+      puts "Not found"
+    end
+
+  end
+
   def command(arg)
     case arg
     when 'help'
       show_help
     when 'new'
       id = create_new
+    when 'list'
+      list
+    when 'find'
+      find(ARGV[1])
     end
   end
 end
