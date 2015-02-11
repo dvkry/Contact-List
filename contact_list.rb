@@ -1,6 +1,7 @@
 require_relative 'contact'
 require_relative 'contact_database'
 require 'pry'
+require 'io/console'
 
 class Application
 
@@ -51,7 +52,13 @@ class Application
       puts id_counter.to_s + ": " + contact.name + " (" + contact.email.strip + ")"
       puts contact.phone_nums if contact.phone_nums != {}
       id_counter += 1 # we know that each contact is on it's 'id' line
+      wait_for_key if id_counter % 5 == 0
     end
+  end
+
+  def wait_for_key
+    print "any key to continue"
+    STDIN.getch
   end
 
   def find(id)
